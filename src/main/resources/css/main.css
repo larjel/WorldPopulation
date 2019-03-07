@@ -1,0 +1,18 @@
+body {
+	margin: 0;
+	padding: 0px;
+	font-size: 14px;
+	background: #eee;
+	color: #000;
+	padding: 20px;
+}
+
+h3 {
+	font-family: "Comic Sans MS", "Lucida Sans Unicode", Arial;
+	font-size: 20px;
+	padding-bottom: 10px;
+}
+
+label {
+	display: block;
+}
