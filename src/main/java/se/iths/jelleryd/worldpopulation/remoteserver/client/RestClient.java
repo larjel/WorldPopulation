@@ -23,8 +23,13 @@ public class RestClient {
 	private static final Gson GSON = new Gson();
 
 	// -------------------------------------------------------------------------
+	private static String encodeUrlSpaces(String url) {
+		return url.replace(" ", "%20");
+	}
+
+	// -------------------------------------------------------------------------
 	private static String performGet(String uri) throws IOException {
-		URL url = new URL(REST_SERVER_BASE_URL + uri);
+		URL url = new URL(encodeUrlSpaces(REST_SERVER_BASE_URL + uri));
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
 		con.setRequestMethod("GET");
@@ -81,5 +86,4 @@ public class RestClient {
 
 		return populationAgeGroup[0];
 	}
-
 }
