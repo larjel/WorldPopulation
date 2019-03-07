@@ -1,6 +1,5 @@
 package se.iths.jelleryd.worldpopulation.backingbeans;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import se.iths.jelleryd.worldpopulation.remoteserver.client.RestClient;
@@ -22,11 +21,11 @@ public class PopulationBean {
 	private int males;
 	private int total;
 
-	private int[] availableYears = new int[MAX_YEAR - MIN_YEAR + 1];
-	private int[] availableAges = new int[MAX_AGE - MIN_AGE + 1];
+	private static int[] availableYears = new int[MAX_YEAR - MIN_YEAR + 1];
+	private static int[] availableAges = new int[MAX_AGE - MIN_AGE + 1];
 
-	@PostConstruct
-	private void populateArrays() {
+	static {
+		// Populate arrays
 		for (int index = 0, year = MIN_YEAR; year <= MAX_YEAR; index++, year++) {
 			availableYears[index] = year;
 		}
