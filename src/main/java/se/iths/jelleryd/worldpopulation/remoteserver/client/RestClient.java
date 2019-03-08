@@ -76,7 +76,7 @@ public class RestClient {
 	/**
 	 * Get list of countries from remote Rest Service using URI "countries".
 	 * 
-	 * @return List of countries
+	 * @return List of countries or null if the server response was empty
 	 * @throws IOException         on IO error
 	 * @throws JsonSyntaxException if bad/unknown JSON response
 	 */
@@ -87,7 +87,7 @@ public class RestClient {
 
 		Countries countries = GSON.fromJson(jsonResponse, Countries.class);
 
-		return countries.getCountries();
+		return (countries == null) ? null : countries.getCountries();
 	}
 
 	/**
@@ -98,7 +98,8 @@ public class RestClient {
 	 * @param country     The country to get data for (as retrieved by the
 	 *                    "countries" URI)
 	 * @param dateOfBirth Date of birth of the person to do calculation for
-	 * @return Total life expectancy in years with one decimal
+	 * @return Total life expectancy in years with one decimal or "?" if the server
+	 *         response was empty
 	 * @throws IOException         on IO error
 	 * @throws JsonSyntaxException if bad/unknown JSON response
 	 */
@@ -112,7 +113,8 @@ public class RestClient {
 
 		TotalLifeExpectancy totalLifeExpectancy = GSON.fromJson(jsonResponse, TotalLifeExpectancy.class);
 
-		return String.format("%.1f", totalLifeExpectancy.getTotalLifeExpectancy());
+		return (totalLifeExpectancy == null) ? "?"
+				: String.format("%.1f", totalLifeExpectancy.getTotalLifeExpectancy());
 	}
 
 	/**
@@ -123,7 +125,7 @@ public class RestClient {
 	 *                URI)
 	 * @param year    Year to get data for
 	 * @param age     Age of population to get data for
-	 * @return Retrieved population data
+	 * @return Retrieved population data or null if the server response was empty
 	 * @throws IOException         on IO error
 	 * @throws JsonSyntaxException if bad/unknown JSON response
 	 */
@@ -138,6 +140,6 @@ public class RestClient {
 		// element [{..content..}]
 		PopulationAgeGroup[] populationAgeGroup = GSON.fromJson(jsonResponse, PopulationAgeGroup[].class);
 
-		return populationAgeGroup[0];
+		return (populationAgeGroup == null) ? null : populationAgeGroup[0];
 	}
 }
