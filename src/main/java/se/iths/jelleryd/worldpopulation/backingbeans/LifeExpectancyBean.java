@@ -12,8 +12,8 @@ import se.iths.jelleryd.worldpopulation.remoteserver.client.RestClient;
  * 
  * @author Lars Jelleryd
  */
-@ManagedBean(name = "user")
-public class UserBean {
+@ManagedBean(name = "lifeExpectancy")
+public class LifeExpectancyBean {
 
 	private final String[] GENDERS = { "male", "female" };
 

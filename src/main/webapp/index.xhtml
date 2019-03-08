@@ -6,7 +6,7 @@
 
 <h:head>
 	<h:outputStylesheet library="css" name="main.css" />
-	<title>World Population Life Expectancy</title>
+	<title>World Population Web API</title>
 </h:head>
 
 <h:body>
@@ -21,20 +21,20 @@
 
 		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
-			<p:outputLabel for="countryUser" value="Country: " />
-			<p:selectOneMenu id="countryUser" value="#{user.country}">
+			<p:outputLabel for="countryLifeExpectancy" value="Country: " />
+			<p:selectOneMenu id="countryLifeExpectancy" value="#{lifeExpectancy.country}">
 				<f:selectItem itemLabel="Select One" itemValue="" />
 				<f:selectItems value="#{countries.countries}" />
 			</p:selectOneMenu>
 
 			<p:outputLabel for="gender" value="Gender: " />
-			<p:selectOneMenu id="gender" value="#{user.gender}">
+			<p:selectOneMenu id="gender" value="#{lifeExpectancy.gender}">
 				<f:selectItem itemLabel="Select One" itemValue="" />
-				<f:selectItems value="#{user.GENDERS}" />
+				<f:selectItems value="#{lifeExpectancy.GENDERS}" />
 			</p:selectOneMenu>
 
 			<p:outputLabel for="birthday" value="Birthday: " />
-			<p:calendar yearRange="c-100:c" navigator="true" readonlyInput="true" pattern="yyyy-MM-dd" id="birthday" value="#{user.dateOfBirth}" />
+			<p:calendar yearRange="c-100:c" navigator="true" readonlyInput="true" pattern="yyyy-MM-dd" id="birthday" value="#{lifeExpectancy.dateOfBirth}" />
 
 		</h:panelGrid>
 
@@ -46,18 +46,18 @@
 			<p:panelGrid columns="2" id="display" columnClasses="label,value">
 
 				<h:outputText value="Country:" />
-				<h:outputText value="#{user.country}" />
+				<h:outputText value="#{lifeExpectancy.country}" />
 
 				<h:outputText value="Gender:" />
-				<h:outputText value="#{user.gender}" />
+				<h:outputText value="#{lifeExpectancy.gender}" />
 
 				<h:outputText value="Birthday:" />
-				<h:outputText value="#{user.dateOfBirth}">
+				<h:outputText value="#{lifeExpectancy.dateOfBirth}">
 					<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:outputText>
 
 				<h:outputText value="Life expectancy:" />
-				<h:outputText value="#{user.totalLifeExpectancy}" />
+				<h:outputText value="#{lifeExpectancy.totalLifeExpectancy}" />
 
 			</p:panelGrid>
 		</p:dialog>
