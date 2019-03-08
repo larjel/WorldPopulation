@@ -1,5 +1,7 @@
 package se.iths.jelleryd.worldpopulation.backingbeans;
 
+import java.util.stream.IntStream;
+
 import javax.faces.bean.ManagedBean;
 
 import se.iths.jelleryd.worldpopulation.remoteserver.client.RestClient;
@@ -27,18 +29,8 @@ public class PopulationBean {
 	private int males;
 	private int total;
 
-	private static int[] availableYears = new int[MAX_YEAR - MIN_YEAR + 1];
-	private static int[] availableAges = new int[MAX_AGE - MIN_AGE + 1];
-
-	static {
-		// Populate arrays
-		for (int index = 0, year = MIN_YEAR; year <= MAX_YEAR; index++, year++) {
-			availableYears[index] = year;
-		}
-		for (int index = 0, age = MIN_AGE; age <= MAX_AGE; index++, age++) {
-			availableAges[index] = age;
-		}
-	}
+	private static int[] availableYears = IntStream.rangeClosed(MIN_YEAR, MAX_YEAR).toArray();
+	private static int[] availableAges = IntStream.rangeClosed(MIN_AGE, MAX_AGE).toArray();
 
 	public String getCountry() {
 		return country;
