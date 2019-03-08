@@ -6,6 +6,12 @@ import javax.faces.bean.ManagedBean;
 
 import se.iths.jelleryd.worldpopulation.remoteserver.client.RestClient;
 
+/**
+ * This bean handles data for the total life expectancy of a person with given
+ * sex, country, and date of birth.
+ * 
+ * @author Lars Jelleryd
+ */
 @ManagedBean(name = "user")
 public class UserBean {
 

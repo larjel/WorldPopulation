@@ -4,6 +4,11 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * JSON object mapping for the "countries" Rest Service.
+ * 
+ * @author Lars Jelleryd
+ */
 public class Countries {
 
 	@SerializedName("countries")

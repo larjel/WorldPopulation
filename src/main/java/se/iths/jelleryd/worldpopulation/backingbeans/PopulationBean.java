@@ -5,6 +5,12 @@ import javax.faces.bean.ManagedBean;
 import se.iths.jelleryd.worldpopulation.remoteserver.client.RestClient;
 import se.iths.jelleryd.worldpopulation.remoteserver.json.PopulationAgeGroup;
 
+/**
+ * This bean handles data for the population table for a specific age group in
+ * the given year and country.
+ * 
+ * @author Lars Jelleryd
+ */
 @ManagedBean(name = "population")
 public class PopulationBean {
 

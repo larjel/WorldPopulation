@@ -3,6 +3,11 @@ package se.iths.jelleryd.worldpopulation.remoteserver.json;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * JSON object mapping for the "total life expectancy" Rest Service.
+ * 
+ * @author Lars Jelleryd
+ */
 public class TotalLifeExpectancy {
 
 	@SerializedName("dob")
