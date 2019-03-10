@@ -17,29 +17,36 @@
 			<p:autoUpdate />
 		</p:messages>
 
-		<h3>TOTAL LIFE EXPECTANCY</h3>
+		<h:panelGrid columns="1" styleClass="calculation-section-panel"
+			cellpadding="5">
 
-		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+			<h3>TOTAL LIFE EXPECTANCY</h3>
 
-			<p:outputLabel for="countryLifeExpectancy" value="Country: " />
-			<p:selectOneMenu id="countryLifeExpectancy" value="#{lifeExpectancy.country}">
-				<f:selectItem itemLabel="Select One" itemValue="" />
-				<f:selectItems value="#{countries.countries}" />
-			</p:selectOneMenu>
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
-			<p:outputLabel for="gender" value="Gender: " />
-			<p:selectOneMenu id="gender" value="#{lifeExpectancy.gender}">
-				<f:selectItem itemLabel="Select One" itemValue="" />
-				<f:selectItems value="#{lifeExpectancy.GENDERS}" />
-			</p:selectOneMenu>
+				<p:outputLabel for="countryLifeExpectancy" value="Country: " />
+				<p:selectOneMenu id="countryLifeExpectancy"
+					value="#{lifeExpectancy.country}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{countries.countries}" />
+				</p:selectOneMenu>
 
-			<p:outputLabel for="birthday" value="Birthday: " />
-			<p:calendar yearRange="c-100:c" navigator="true" readonlyInput="true" pattern="yyyy-MM-dd" id="birthday" value="#{lifeExpectancy.dateOfBirth}" />
+				<p:outputLabel for="gender" value="Gender: " />
+				<p:selectOneMenu id="gender" value="#{lifeExpectancy.gender}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{lifeExpectancy.GENDERS}" />
+				</p:selectOneMenu>
 
+				<p:outputLabel for="birthday" value="Birthday: " />
+				<p:calendar yearRange="c-100:c" navigator="true"
+					readonlyInput="true" pattern="yyyy-MM-dd" id="birthday"
+					value="#{lifeExpectancy.dateOfBirth}" />
+
+			</h:panelGrid>
+
+			<p:commandButton value="Submit" update="display"
+				oncomplete="PF('dlg').show()" icon="pi pi-check" />
 		</h:panelGrid>
-
-		<p:commandButton value="Submit" update="display"
-			oncomplete="PF('dlg').show()" icon="pi pi-check" />
 
 		<p:dialog header="Result" modal="true" showEffect="bounce"
 			widgetVar="dlg" resizable="false">
@@ -61,59 +68,64 @@
 
 			</p:panelGrid>
 		</p:dialog>
-		
-		<h3>POPULATION TABLE FOR A SPECIFIC AGE GROUP</h3>
-		
-		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
-			<p:outputLabel for="countryPopulation" value="Country: " />
-			<p:selectOneMenu id="countryPopulation" value="#{population.country}">
-				<f:selectItem itemLabel="Select One" itemValue="" />
-				<f:selectItems value="#{countries.countries}" />
-			</p:selectOneMenu>
+		<h:panelGrid columns="1" styleClass="calculation-section-panel"
+			cellpadding="5">
+			<h3>POPULATION TABLE FOR A SPECIFIC AGE GROUP</h3>
 
-			<p:outputLabel for="year" value="Year: " />
-			<p:selectOneMenu id="year" value="#{population.year}">
-				<f:selectItem itemLabel="Select One" itemValue="" />
-				<f:selectItems value="#{population.availableYears}" />
-			</p:selectOneMenu>
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
 
-			<p:outputLabel for="age" value="Age: " />
-			<p:selectOneMenu id="age" value="#{population.age}">
-				<f:selectItem itemLabel="Select One" itemValue="" />
-				<f:selectItems value="#{population.availableAges}" />
-			</p:selectOneMenu>
+				<p:outputLabel for="countryPopulation" value="Country: " />
+				<p:selectOneMenu id="countryPopulation"
+					value="#{population.country}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{countries.countries}" />
+				</p:selectOneMenu>
 
+				<p:outputLabel for="year" value="Year: " />
+				<p:selectOneMenu id="year" value="#{population.year}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{population.availableYears}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="age" value="Age: " />
+				<p:selectOneMenu id="age" value="#{population.age}">
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems value="#{population.availableAges}" />
+				</p:selectOneMenu>
+
+			</h:panelGrid>
+
+			<p:commandButton value="Submit" update="displayPopulation"
+				oncomplete="PF('dlgPopulation').show()" icon="pi pi-check" />
 		</h:panelGrid>
-
-		<p:commandButton value="Submit" update="displayPopulation"
-			oncomplete="PF('dlgPopulation').show()" icon="pi pi-check" />
-
+		
 		<p:dialog header="Result" modal="true" showEffect="bounce"
 			widgetVar="dlgPopulation" resizable="false">
-			<p:panelGrid columns="2" id="displayPopulation" columnClasses="label,value">
+			<p:panelGrid columns="2" id="displayPopulation"
+				columnClasses="label,value">
 
 				<h:outputText value="Country:" />
-				<h:outputText value="#{population.country}" />							
+				<h:outputText value="#{population.country}" />
 
 				<h:outputText value="Year:" />
-				<h:outputText value="#{population.year}" />							
+				<h:outputText value="#{population.year}" />
 
 				<h:outputText value="Age:" />
-				<h:outputText value="#{population.age}" />							
+				<h:outputText value="#{population.age}" />
 
 				<h:outputText value="Females:" />
-				<h:outputText value="#{population.females}" />							
+				<h:outputText value="#{population.females}" />
 
 				<h:outputText value="Males:" />
-				<h:outputText value="#{population.males}" />							
+				<h:outputText value="#{population.males}" />
 
 				<h:outputText value="Total:" />
-				<h:outputText value="#{population.total}" />							
-				
+				<h:outputText value="#{population.total}" />
+
 			</p:panelGrid>
 		</p:dialog>
-		
+
 	</h:form>
 
 </h:body>
